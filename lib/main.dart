@@ -1,11 +1,19 @@
-// ignore_for_file: library_private_types_in_public_api, non_constant_identifier_names
+// ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 import 'dart:math';
 
 void main() {
   return runApp(
-    MaterialApp(
+    const  MyApp(),
+  );
+}
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: const Center(
@@ -15,8 +23,8 @@ void main() {
         ),
         body: const DiceChange(),
       ),
-    ),
-  );
+    );
+  }
 }
 
 class DiceChange extends StatefulWidget {
@@ -29,7 +37,7 @@ class DiceChange extends StatefulWidget {
 class _DiceChangeState extends State<DiceChange> {
   int num1 = 1;
   int num2 = 2;
-  void ChangeState() {
+  void changeState() {
     setState(() {
       //Random.nextInt(n) returns random integer from 0 to n-1
       num1 = Random().nextInt(6) + 1;
@@ -48,7 +56,7 @@ class _DiceChangeState extends State<DiceChange> {
               child: TextButton(
                 child: Image.asset('images/dice$num1.png'),
                 onPressed: () {
-                  ChangeState();
+                  changeState();
                 },
               ),
             ),
@@ -59,7 +67,7 @@ class _DiceChangeState extends State<DiceChange> {
               child: TextButton(
                 child: Image.asset('images/dice$num2.png'),
                 onPressed: () {
-                  ChangeState();
+                  changeState();
                 },
               ),
             ),
